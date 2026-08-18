@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恏微美學牙醫診所 | 沉穩專業的口腔照護</title>
+    <style>
+        /* 基礎設定與字體 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/genwanmin-font@1.501.0/GenWanMin-TTF/GenWanMin-B.css');
+        
+        :root {
+            --primary-dark: #1A2530; /* 沉穩深藍 */
+            --accent-gold: #C5A880;  /* 質感香檳金 */
+            --bg-light: #F7F7F7;     /* 溫和淺灰 */
+            --text-main: #333333;
+            --text-muted: #666666;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            
+        }
+
+        /* 導覽列 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5vw;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 6 px;
+            font-family: 'GenWanMin-B', 'Noto Serif TC', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #DD006F;
+            letter-spacing: 3px;
+        }
+
+        .logo-img {
+            height: 62px;       /* 圖示高度（可依視覺調整 36px ~ 48px） */
+            width: auto;        /* 寬度自動等比例縮放，避免變形 */
+            display: block;
+        }
+
+        /* 預約按鈕 */
+        .btn-reserve {
+            background-color: var(--primary-dark);
+            color: #FFFFFF;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-dark);
+        }
+
+        .btn-reserve:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        /* 首頁視覺區 */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(26, 37, 48, 0.8), rgba(26, 37, 48, 0.8)), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #E0E0E0;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .hero .btn-reserve {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            font-size: 18px;
+            padding: 15px 40px;
+        }
+
+        .hero .btn-reserve:hover {
+            background-color: #FFFFFF;
+            color: var(--primary-dark);
+        }
+
+       /* 最新公告區（置中白色外框＋金色頂條） */
+        .news-section {
+            padding: 80px 5vw;
+            background-color: var(--bg-light);
+            text-align: center;
+        }
+
+        .news-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            padding: 35px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--accent-gold);
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-date {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .news-tag {
+            background-color: var(--primary-dark);
+            color: #FFFFFF;
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .news-text {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 15px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+
+
+        /* 診療項目區 */
+        .services {
+            padding: 80px 5vw;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .service-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: 8px;
+            width: 280px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: var(--primary-dark);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+
+
+       /* 醫師團隊區 */
+        .team {
+            padding: 80px 5vw;
+            background-color: #FFFFFF;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center; /* 水平置中 */
+            gap: 36px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;          /* 整個區塊置中 */
+        }
+
+        .doctor-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 36px 30px;
+            width: 320px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-sizing: border-box;
+        }
+
+        .doctor-photo {
+            width: 100%;
+            height: 240px;
+            background-color: #E2E8F0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .doctor-card h3 {
+            color: var(--primary-dark);
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .doctor-title {
+            color: var(--accent-gold);
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .doctor-bio {
+            padding-left: 20px;
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        /* 門診時間表區 */
+        .schedule-section {
+            padding: 80px 5vw;
+            background-color: var(--bg-light, #F7F7F7);
+            display: flex;
+            justify-content: center;
+        }
+
+        .schedule-card-wrapper {
+            width: 100%;
+            max-width: 900px;
+            background: #FAF6EF;
+            padding: 45px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #EFE8DA;
+            box-sizing: border-box;
+        }
+
+        .schedule-header-title {
+            font-family: 'GenWanMin-B', 'Noto Serif TC', serif;
+            color: #275C53;
+            font-size: 26px;
+            text-align: center;
+            margin: 0 0 20px 0;
+            letter-spacing: 4px;
+        }
+
+       /* 頂部圖例欄 (Legend) */
+.doctor-legend {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    font-size: 14px;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* 圖形符號樣式與顏色 */
+.symbol, .doc-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* 院長：星星（質感香檳金） */
+.star {
+    color: #C5A880;
+    font-size: 17px;
+}
+
+/* 吳醫師：圓圈（沉穩墨綠） */
+.circle {
+    color: #275C53;
+    font-size: 14px;
+}
+
+/* 劉承皓醫師：三角形（暖棕色） */
+.triangle {
+    color: #A06F4D;
+    font-size: 13px;
+}
+
+/* 特約診標籤（精緻圓角「特」字印章） */
+.special {
+    background-color: #275C53;
+    color: #FFFFFF;
+    font-size: 11px;
+    width: 17px;
+    height: 17px;
+    border-radius: 3px;
+    font-weight: 600;
+    line-height: 17px;
+}
+
+/* 表格本體 */
+.schedule-table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+}
+
+.clinic-schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #EAE3D2;
+}
+
+.clinic-schedule-table th {
+    background-color: #275C53;
+    color: #FFFFFF;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 15px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.clinic-schedule-table th:last-child {
+    border-right: none;
+}
+
+.clinic-schedule-table th.sun-col {
+    background-color: #214e46;
+}
+
+.clinic-schedule-table td {
+    padding: 12px 6px;
+    text-align: center;
+    border-bottom: 1px solid #F0EAE1;
+    border-right: 1px solid #F0EAE1;
+    vertical-align: middle;
+}
+
+.clinic-schedule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.clinic-schedule-table td:last-child {
+    border-right: none;
+}
+
+/* 醫師名稱與符號排版 */
+.doc-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin: 4px 0;
+}
+
+.doc-name {
+    font-size: 13px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.time-slot {
+    background-color: #FDFBF7;
+    width: 130px;
+}
+
+.slot-name {
+    display: block;
+    font-weight: 700;
+    color: #275C53;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+
+.slot-time {
+    display: block;
+    font-size: 12px;
+    color: #777777;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.status-off {
+    color: #BDBDBD;
+    font-size: 14px;
+}
+
+.schedule-footer-note {
+    margin-top: 18px;
+    text-align: right;
+    font-size: 13px;
+    color: #7A7A7A;
+}
+
+@media (max-width: 600px) {
+    .schedule-card-wrapper {
+        padding: 24px 12px;
+    }
+}
+
+
+        /* 頁尾資訊 */
+        /* 典雅米白色頁尾 */
+        .custom-footer {
+            background-color: #FAF6EF;       /* 溫潤米白色背景 */
+            padding: 70px 6vw 30px 6vw;
+            border-top: 1px solid #EFE8DA;
+            color: #2B2B2B;
+}
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 50px;
+}
+
+         /* 左欄：標題與理念 */
+         .footer-left {
+         flex: 1.6;
+}
+
+         .footer-title {
+             font-family: 'GenWanMin-B', 'Noto Serif TC', serif;
+             font-size: 32px;
+             color: #DD006F;                  /* 桃紅色 */
+             letter-spacing: 5px;
+             margin: 0 0 18px 0;
+             font-weight: 700;
+}
+
+          .footer-slogan {
+              font-family: 'Noto Serif TC', serif;
+              font-size: 15px;
+              color: #555555;
+              line-height: 1.8;
+              margin: 0;
+              max-width: none;
+              white-space: nowrap;
+              letter-spacing: 0.5px;
+}
+
+          /* 右欄：聯絡資訊與圖示 */
+          .footer-right {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              font-size: 16px;
+              color: #2B2B2B;
+              letter-spacing: 0.5px;
+}
+
+          .footer-info-row {
+              display: flex;
+              align-items: center;
+              gap: 14px;
+}
+
+          .footer-info-row.align-top {
+              align-items: flex-start;
+}
+
+          .footer-icon {
+              width: 22px;
+              height: 22px;
+              color: #A06F4D;                  /* 暖棕金圖示 */
+              flex-shrink: 0;
+              margin-top: 2px;
+}
+
+          .footer-phone-clickable,
+          .footer-phone-link {
+              color: #2B2B2B !important;
+              text-decoration: none !important; /* 關鍵：去除藍色底線 */
+              font-weight: 500;
+              letter-spacing: 1px;
+              display: inline-flex;
+              align-items: center;
+              gap: 14px;
+}
+
+          .footer-phone-clickable:hover,
+          .footer-phone-link:hover {
+              color: #275C53 !important;
+              text-decoration: none !important;
+}
+
+          .footer-hours div {
+              line-height: 1.7;
+}
+
+/* 底部版權 */
+.footer-copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(160, 111, 77, 0.15);
+    font-size: 13px;
+    color: #888888;
+    letter-spacing: 1px;
+}
+
+        /* 手機版排版自動垂直堆疊 */
+        @media (max-width: 768px) {
+        .footer-container {
+        flex-direction: column;
+        gap: 36px;
+    }
+}
+
+        /* 預約專線樣式 */
+        .footer-phone {
+            margin: 12px 0;
+            font-size: 16px;
+}
+
+        .footer-phone a {
+            color: var(--accent-gold);     /* 香檳金色 */
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+}
+
+        .footer-phone a:hover {
+            color: #FFFFFF;               /* 滑鼠移過去變白色 */
+            text-decoration: underline;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+     <header>
+        <div class="logo">
+            <img src="logo.png" alt="恏微美學牙醫診所 Logo" class="logo-img">
+            <span>恏微美學牙醫診所</span>
+     </div>
+        <div class="nav-actions">
+            <a href="#news" class="btn-reserve">最新公告</a>
+            <a href="#team" class="btn-reserve">醫師團隊</a>
+            <a href="#schedule" class="btn-reserve">門診時間</a>
+            <a href="https://lin.ee/RNWmp3K" target="_blank" class="btn-reserve">線上預約</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>專注細節，成就自信微笑</h1>
+        <p>我們提供一個靜謐、專業的醫療空間。結合數位科技與美學思維，為您量身打造最合適的口腔治療計畫。</p>
+        <a href="https://lin.ee/RNWmp3K" target="_blank" class="btn-reserve">立即預約諮詢</a>
+    </section>
+
+<!-- 最新公告 -->
+    <section class="news-section" id="news">
+        <h2 class="section-title">最新公告</h2>
+        <div class="news-container">
+            <div class="news-item">
+                <span class="news-date">2026.08.01</span>
+                <span class="news-tag">門診公告</span>
+                <p class="news-text">國定假日門診時間調整公告，敬請提前預約排程。</p>
+            </div>           
+        </div>
+    </section>
+
+
+    <section class="services">
+        <h2 class="section-title">專業診療項目</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>數位微創植牙</h3>
+                <p>運用 3D 電腦斷層輔助精準定位，傷口小、恢復快，重建穩固咀嚼功能。</p>
+            </div>
+            <div class="service-card">
+                <h3>隱形齒顎矯正</h3>
+                <p>客製化透明牙套，舒適美觀，在不知不覺中將牙齒排列至完美弧度。</p>
+            </div>
+            <div class="service-card">
+                <h3>前牙美學修復</h3>
+                <p>全瓷冠與超薄陶瓷貼片，改善牙齒型態與色澤，還原自然透亮的笑容。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2 class="section-title">專業醫療團隊</h2>
+        <div class="team-grid">                   
+            <div class="doctor-card">
+                <img src="劉宗豪醫師.png" alt="院長 劉宗豪醫師" class="doctor-photo">
+                <h3>院長 ｜ 劉宗豪醫師</h3>
+                <p class="doctor-title">專長：植牙｜矯正｜牙周｜貼片｜美學贗復</p>
+                <ul class="doctor-bio">
+                    <li>國立陽明大學解剖研究所碩士</li>
+                    <li>台北醫學大學牙醫學士</li>
+                    <li>嘉義長庚醫院牙科部總醫師</li>
+                    <li>雙和醫院贗復專科訓練醫師</li>
+                    <li>紐約大學人工植牙專科研究醫師</li>
+                    <li>亞洲植牙醫學會 專科醫師</li>
+                    <li>WLMC雷射專科醫師</li>
+                </ul>
+            </div>
+
+        <div class="doctor-card">
+            <img src="吳國柱醫師.png" alt="醫師姓名" class="doctor-photo">
+            <h3>主治醫師 ｜ 吳國柱醫師</h3>
+            <p class="doctor-title">專長：活動假牙｜固定假牙｜一般牙科</p>
+            <ul class="doctor-bio">
+                <li>國防醫學院牙醫學士</li>
+                <li>前三軍總醫院醫師</li>
+                <li>前國軍桃園總醫院主治醫師</li>
+            </ul>
+        </div>
+
+        <div class="doctor-card">
+            <img src="劉承皓醫師.png" alt="醫師姓名" class="doctor-photo">
+            <h3>主治醫師 ｜ 劉承皓醫師</h3>
+            <p class="doctor-title">專長：矯正｜假牙贗復｜植牙｜一般牙科</p>
+            <ul class="doctor-bio">
+                <li>中山醫學大學牙醫學士</li>
+                <li>中山醫學院附設醫院牙科部醫師</li>
+                <li>基隆長庚醫院牙科部醫師</li>
+                <li>北京大學口腔醫學院研習醫師</li>
+                <li>Angelalign時代天使隱形矯正認證醫師</li>
+            </ul>
+        </div>
+
+
+        </div>
+    </section>
+
+<!-- 門診時間表區塊 -->
+    <section class="schedule-section" id="schedule">
+        <div class="schedule-card-wrapper">
+            <h2 class="schedule-header-title">門診時間表</h2>
+            
+ <!-- 醫師圖例對照列 (Legend) -->
+        <div class="doctor-legend">
+            <span class="legend-item"><span class="symbol star">★</span> 院長</span>
+            <span class="legend-item"><span class="symbol circle">●</span> 吳醫師</span>
+            <span class="legend-item"><span class="symbol triangle">▲</span> 劉承皓醫師</span>
+            <span class="legend-item"><span class="symbol special">特</span> 特約診</span>
+        </div>
+
+        <div class="schedule-table-responsive">
+            <table class="clinic-schedule-table">
+                <thead>
+                    <tr>
+                        <th class="time-col">時段</th>
+                        <th>週一</th>
+                        <th>週二</th>
+                        <th>週三</th>
+                        <th>週四</th>
+                        <th>週五</th>
+                        <th>週六</th>
+                        <th class="sun-col">週日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 午診 14:00 - 17:30 -->
+                    <tr>
+                        <td class="time-slot">
+                            <span class="slot-name">午診</span>
+                            <span class="slot-time">14:00 – 17:30</span>
+                        </td>
+                        <!-- 週一：吳 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge circle">●</span><span class="doc-name">吳醫師</span></div>
+                        </td>
+                        <!-- 週二：劉 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge triangle">▲</span><span class="doc-name">劉承皓</span></div>
+                        </td>
+                        <!-- 週三：院長 / 吳 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge star">★</span><span class="doc-name">院長</span></div>
+                            <div class="doc-item"><span class="doc-badge circle">●</span><span class="doc-name">吳醫師</span></div>
+                        </td>
+                        <!-- 週四：特約診 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge special">特</span><span class="doc-name">特約診</span></div>
+                        </td>
+                        <!-- 週五：院長 / 吳 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge star">★</span><span class="doc-name">院長</span></div>
+                            <div class="doc-item"><span class="doc-badge circle">●</span><span class="doc-name">吳醫師</span></div>
+                        </td>
+                        <!-- 週六：特約診 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge special">特</span><span class="doc-name">特約診</span></div>
+                        </td>
+                        <!-- 週日：休診 -->
+                        <td class="status-off">休診</td>
+                    </tr>
+                    
+                    <!-- 晚診 18:00 - 21:30 -->
+                    <tr>
+                        <td class="time-slot">
+                            <span class="slot-name">晚診</span>
+                            <span class="slot-time">18:00 – 21:30</span>
+                        </td>
+                        <!-- 週一：特約診 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge special">特</span><span class="doc-name">特約診</span></div>
+                        </td>
+                        <!-- 週二：劉 / 吳 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge triangle">▲</span><span class="doc-name">劉承皓</span></div>
+                            <div class="doc-item"><span class="doc-badge circle">●</span><span class="doc-name">吳醫師</span></div>
+                        </td>
+                        <!-- 週三：院長 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge star">★</span><span class="doc-name">院長</span></div>
+                        </td>
+                        <!-- 週四：吳 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge circle">●</span><span class="doc-name">吳醫師</span></div>
+                        </td>
+                        <!-- 週五：院長 -->
+                        <td>
+                            <div class="doc-item"><span class="doc-badge star">★</span><span class="doc-name">院長</span></div>
+                        </td>
+                        <!-- 週六：休診 -->
+                        <td class="status-off">休診</td>
+                        <!-- 週日：休診 -->
+                        <td class="status-off">休診</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="schedule-footer-note">
+            <p>※ 本診所採預約制，實際看診醫師請以現場排程與官方 LINE 預約為主。</p>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+<!-- 典雅雙欄頁尾 -->
+<footer class="custom-footer">
+    <div class="footer-container">
+        
+        <!-- 左欄：診所名稱與理念 -->
+        <div class="footer-left">
+            <h2 class="footer-title">恏微美學牙醫診所</h2>
+            <p class="footer-slogan">-以心為本照顧好每位患者，讓每一次看診充滿安心-</p>
+        </div>
+
+        <!-- 右欄：地址、電話、看診時間（附暖棕圖示） -->
+        <div class="footer-right">
+            <div class="footer-info-row">
+                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>新北市板橋區文化路一段255號</span>
+            </div>
+            <div class="footer-info-row">
+                <!-- 整行包成可點擊直接撥號的連結 -->
+    <a href="tel:0282588028" class="footer-phone-clickable">
+        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span class="phone-number">02-8258-8028</span>
+    </a>
+</div>
+            <div class="footer-info-row align-top">
+                <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div class="footer-hours">
+                    <div>週一至週五 14:00–21:30</div>
+                    <div>週日休診（詳見門診表）</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- 版權聲明 -->
+    <div class="footer-copyright">
+        Copyright © 2026 Hao Wei Esthetic Dental Clinic. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
